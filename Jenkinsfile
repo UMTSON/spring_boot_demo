@@ -1,15 +1,25 @@
 pipeline {
     agent any
+    environment {
+        name = "test"
+        url = "https://localhost:8080"
+    }
     stages {
-        stage('Example') {
+        stage('Example Build') {
             steps {
                 echo 'Hello World'
             }
         }
-    }
-    post { 
-        always { 
-            echo 'I will always say Hello again!'
+        stage('Example Deploy') {
+            when {
+                allOf {
+                    branch 'main'
+                    environment name: 'name', value: 'test'
+                }
+            }
+            steps {
+                echo 'Deploying'
+            }
         }
     }
 }
