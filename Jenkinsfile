@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        name = "test"
-        url = "https://localhost:8080"
+            name = "test"
+            url = "https://localhost:8080"
     }
     stages {
         stage('Example Build') {
