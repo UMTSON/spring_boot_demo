@@ -1,41 +1,15 @@
-pipeline{
+pipeline {
     agent any
-    
     stages {
-        stage ('Compile Stage') {
-        
+        stage('Example') {
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn clean compile'
-            
-                }
+                echo 'Hello World'
             }
-        }
-        
-        stage ('Testing Stage') { 
-        
-            
-            steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn test'
-            
-                }
-        
         }
     }
-        
-        stage ('Deploy Stage') {
-        
-            
-            steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn deploy'
-            
-                }
-            }
+    post { 
+        always { 
+            echo 'I will always say Hello again!'
         }
-        
-     }
-    
+    }
 }
-
