@@ -7,11 +7,17 @@ pipeline {
     stages {
         stage('Example Build') {
             steps {
-                echo 'Hello World'
+                echo 'Build Edildi'
+            }
+        }
+        stage('Example Test') {
+            steps {
+                echo 'Test Edildi'
             }
         }
         stage('Example Deploy') {
-            when {             
+            when {  
+                    beforeAgent true
                     environment name: 'name', value: 'test'
             }
             steps {
