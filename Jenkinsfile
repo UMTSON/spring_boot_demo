@@ -11,11 +11,8 @@ pipeline {
             }
         }
         stage('Example Deploy') {
-            when {
-                allOf {
-                    branch 'main'
+            when {             
                     environment name: 'name', value: 'test'
-                }
             }
             steps {
                 echo 'Deploying'
